@@ -25,7 +25,7 @@
         </div>
     </form>
 
-    <form th:action="@{/dle-data-nerozeni}" method="get">
+    <form th:action="@{/dle-data-narozeni}" method="get">
         <div class="row">
             <div class="ten columns">Sařezané dle data narození
             </div>
@@ -40,11 +40,11 @@
         <div class="row">
             <div class="five columns">
                 <label for="od">Od</label>
-                <input id="od" name="od" class="u-full-width" type="number" min="1930" max="2020">
+                <input id="od" name="rokOd" class="u-full-width" type="number" min="1930" max="2020">
             </div>
             <div class="five columns">
                 <label for="do">Do</label>
-                <input id="do" name="do" class="u-full-width" type="number" min="1930" max="2020">
+                <input id="do" name="rokDo" class="u-full-width" type="number" min="1930" max="2020">
             </div>
             <div class="two columns submit">
                 <button class="button-primary" type="submit">Zobrazit</button>
