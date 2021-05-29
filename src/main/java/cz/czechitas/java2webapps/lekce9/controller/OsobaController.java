@@ -65,7 +65,8 @@ public class OsobaController {
      * TODO: nefunguje správně stránkování. Při zadání další stránky se zobrazí vše.
      */
     @GetMapping(value = "/rok-narozeni")
-    public ModelAndView filtrDleRokuNarozeni(int rokOd, int rokDo, @PageableDefault(sort = {"datumNarozeni", "prijmeni"}) Pageable pageable) {
+    public ModelAndView filtrDleRokuNarozeni(int rokOd, int rokDo, @PageableDefault(sort = {"datumNarozeni", "prijmeni"})
+            Pageable pageable) {
         return new ModelAndView("osoby")
                 .addObject("osoby", service.filtrDleNarozeni(rokOd, rokDo, pageable));
     }
@@ -75,8 +76,7 @@ public class OsobaController {
      */
     @GetMapping(value = "/prijmeni")
 //    public ModelAndView filtrDlePrijmeni(@PageableDefault(sort = {"prijmeni"}) Pageable pageable, Osoba osoba
-    public ModelAndView filtrDlePrijmeni(@PageableDefault(sort = {"prijmeni"}) Pageable pageable, String prijmeni
-    ) {
+    public ModelAndView filtrDlePrijmeni(String prijmeni, @PageableDefault(sort = {"prijmeni"}) Pageable pageable) {
         return new ModelAndView("osoby")
 //            .addObject("osoby", service.filtrDlePrijmeni(osoba.getPrijmeni(), pageable));
                 .addObject("osoby", service.filtrDlePrijmeni(prijmeni, pageable));
@@ -86,7 +86,7 @@ public class OsobaController {
      * Filtr podle obce
      */
     @GetMapping(value = "/obec")
-    public ModelAndView filtrDleObce(String obec, @PageableDefault() Pageable pageable) {
+    public ModelAndView filtrDleObce(String obec, @PageableDefault(sort={"prijmeni", "jmeno"}) Pageable pageable) {
         return new ModelAndView("osoby-s-adresou")
                 .addObject("osoby", service.filtrDleObce(obec, pageable));
     }
