@@ -29,14 +29,6 @@
         </tr>
         </tbody>
     </table>
-<!--    <div class="pager">-->
-<!--        <a th:each="pageNumber : ${#numbers.sequence(0,osoby.totalPages-1)}"-->
-<!--           th:href="@{/(size=${osoby.size}, page=${pageNumber})}"-->
-<!--           th:text="${pageNumber + 1}"-->
-<!--           class="page"-->
-<!--           th:classappend="${pageNumber==osoby.number} ? 'active'"></a>-->
-<!--    </div>-->
-
     <div class="pager">
         <a th:each="pageNumber : ${#numbers.sequence(0,osoby.totalPages-1)}"
            th:href="@{${currentURL}(size=${osoby.size}, page=${pageNumber})}"

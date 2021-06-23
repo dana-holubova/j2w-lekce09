@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UrlPathHelper;
@@ -62,10 +63,12 @@ public class OsobaController {
 
     /**
      * Filtr podle roku narození
-     * TODO: nefunguje správně stránkování. Při zadání další stránky se zobrazí vše.
+     Anotace @RequestParam říká, jak se má parametr z prohlížeče jmenovat. V prohlížeče může přijít parametr nějak
+     pojmenovaný a já jej můžu přejmenmovt. Hodí se to, když je ve formuláři proměnná s názve „do“, což je klíčové slovo
+     v Java, které by v Java kódu dělalo problém.
      */
     @GetMapping(value = "/rok-narozeni")
-    public ModelAndView filtrDleRokuNarozeni(int rokOd, int rokDo, @PageableDefault(sort = {"datumNarozeni", "prijmeni"})
+    public ModelAndView filtrDleRokuNarozeni(@RequestParam("rokOd") int rokOd, @RequestParam("rokDo") int rokDo, @PageableDefault(sort = {"datumNarozeni", "prijmeni"})
             Pageable pageable) {
         return new ModelAndView("osoby")
                 .addObject("osoby", service.filtrDleNarozeni(rokOd, rokDo, pageable));

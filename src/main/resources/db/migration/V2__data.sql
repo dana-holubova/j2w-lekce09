@@ -816,31 +816,3 @@ SET
 
 INSERT INTO osoba (jmeno, prijmeni, datum_narozeni, adresa_id)
 VALUES ('Alena', 'Habrová', '1956-08-23', @adresa_id);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
